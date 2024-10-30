@@ -1,0 +1,134 @@
+stages:
+  - lint
+  - test
+  - build
+  - publish
+  - release
+
+pre-commit:
+  image: python:alpine
+  stage: lint
+  rules:
+    # Run only if merge request
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run if commit on default branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  before_script:
+    - apk add git
+    - pip install pre-commit
+  script:
+    - pre-commit run --all --show-diff-on-failure --verbose --color always
+
+check_version:
+  stage: lint
+  image: python:alpine
+  rules:
+    # Run if commit that start with a version number is pushed
+    - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+.*/
+  before_script:
+    - pip install poetry
+    - poetry --version
+  script:
+    # Ensure tag is the same as the program version
+    - test $(poetry version --short) = $CI_COMMIT_TAG
+
+check_changelog:
+  stage: lint
+  image: python:alpine
+  rules:
+    # Run if commit that start with a version number is pushed
+    - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
+  before_script:
+    - pip install poetry
+    - poetry --version
+  script:
+    # Ensure change log is completed correctly
+    - cat CHANGES.rst | grep $CI_COMMIT_TAG
+
+pytest:
+  image:
+    name: python:$PYTHON_VERSION-alpine
+  stage: test
+  tags:
+    - cie-oow-dind-runner
+  rules:
+    # Run if merge request
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run if commit on default branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  services:
+    - name: docker:dind
+      alias: dind
+  variables:
+    ODOO_RPC_URL: dind
+    DOCKER_HOST: tcp://dind:2375/
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+  coverage: '/TOTAL\s+\d+\s+\d+\s+(\d+)\%/'
+  before_script:
+    - apk add git
+    - pip install poetry
+    - poetry --version
+    - export PATH="$HOME/.local/bin:$PATH"
+    - poetry install --all-extras
+  script:
+    - poetry run pytest -vv -x --cov=odoo_openupgrade_wizard
+  parallel:
+    matrix:
+      - PYTHON_VERSION:
+        - "3.9"
+        - "3.10"
+        - "3.11"
+        - "3.12"
+        - "3.13"
+
+build:
+  stage: build
+  image: python:alpine
+  rules:
+    # Run if merge request
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    # Run if commit on default branch
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    # Run if commit that start with a version number is pushed
+    - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+.*/
+  before_script:
+    - pip install poetry
+    - poetry --version
+  script:
+    - poetry build
+  artifacts:
+    untracked: true
+    paths:
+      - dist/
+
+publish:
+  stage: publish
+  image: python:alpine
+  rules:
+    # Run if commit that start with a version number is pushed
+    - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+.*/
+  before_script:
+    - pip install poetry
+    - poetry --version
+    - ls -l dist
+    # Uncomment for testing build publication on test.pypi.org
+    #- poetry config repo.pypitest https://test.pypi.org/legacy/
+  script:
+    - poetry publish --skip-existing --username $PYPI_USER --password $PYPI_TOKEN
+
+release:
+  stage: release
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    # Run only for a patch, minor or major release
+    # This avoid creating a release for alpha, beta, or other special
+    # releases
+    - if: $CI_COMMIT_TAG =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
+  script:
+    - echo "running release_job for $CI_COMMIT_TAG"
+  release:
+    name: "$CI_COMMIT_TAG"
+    description: "Change log here: ${CI_PROJECT_URL}/-/blob/main/CHANGES.rst"
+    tag_name: "$CI_COMMIT_TAG"
+    ref: "$CI_COMMIT_SHA"

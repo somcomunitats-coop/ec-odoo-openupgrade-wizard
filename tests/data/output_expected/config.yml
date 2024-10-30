@@ -1,0 +1,73 @@
+project_name: test-cli
+
+
+postgres_image_name: postgres:13
+postgres_container_name: test-cli-container-postgres-13
+postgres_volume_name: test-cli-volume-postgres-13
+postgres_extra_settings:
+
+
+odoo_rpc_timeout: 3600
+odoo_host_xmlrpc_port: 9069
+odoo_default_company:
+  country_code: FR
+
+
+odoo_versions:
+  - 14.0
+  - 15.0
+
+
+odoo_version_settings:
+  14.0:
+  15.0:
+
+
+migration_steps:
+  - name: 1
+    version: 14.0
+    execution_context: regular
+    complete_name: step_01__regular__14.0
+
+  - name: 2
+    version: 15.0
+    execution_context: openupgrade
+    complete_name: step_02__openupgrade__15.0
+
+  - name: 3
+    version: 15.0
+    execution_context: regular
+    complete_name: step_03__regular__15.0
+
+
+workload_settings:
+
+  # Ignored module list
+  ignored_module_list: []
+
+  # porting a module requires 45 minutes minimaly
+  port_minimal_time: 45
+
+  # a migration cost more for each version
+  port_per_version: 15
+
+  # Porting 120 lines of Python code costs 1 hour
+  port_per_python_line_time: 0.5
+
+  # Porting 120 lines of Javascript code costs 1 hour
+  port_per_javascript_line_time: 0.5
+
+  # Porting 10 lines of XML costs 1 minute
+  port_per_xml_line_time: 0.10
+
+  # Minimal time for Openupgrade PR
+  open_upgrade_minimal_time: 10
+
+  # time for a line of model in the openupgrade_analysis.txt
+  openupgrade_model_line_time: 10
+
+  # Time for a line of field in the openupgrade_analysis.txt
+  openupgrade_field_line_time: 5
+
+  # Time for a line of XML in the openupgrade_analysis.txt
+  openupgrade_xml_line_time: 0.1

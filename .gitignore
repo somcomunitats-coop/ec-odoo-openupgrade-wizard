@@ -1,0 +1,10 @@
+env
+.gitlab-ci-venv
+__pycache__
+.tox
+dist
+.coverage
+.pytest_cache
+/tests/data/output/*
+log/
+_auto_generated_odoo.cfg

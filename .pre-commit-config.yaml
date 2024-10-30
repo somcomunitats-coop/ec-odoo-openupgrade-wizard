@@ -1,0 +1,41 @@
+
+exclude: '^tests/data/output_expected/'
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+        exclude: exclude
+      - id: debug-statements
+      - id: mixed-line-ending
+      - id: name-tests-test
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-added-large-files
+        args: ['--maxkb=2048']
+      - id: check-docstring-first
+      - id: check-merge-conflict
+      - id: check-symlinks
+  - repo: https://github.com/pre-commit/mirrors-isort
+    rev: v5.10.1
+    hooks:
+      - id: isort
+  - repo: https://github.com/psf/black
+    rev: 23.11.0
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/flake8
+    rev: "6.1.0"
+    hooks:
+      - id: flake8
+  # - repo: https://gitlab.com/smop/pre-commit-hooks
+  #   rev: v1.0.0
+  #   hooks:
+  #     - id: check-gitlab-ci
+  # - repo: https://github.com/kadrach/pre-commit-gitlabci-lint
+  #   rev: 22d0495c9894e8b27cc37c2ed5d9a6b46385a44c
+  #   hooks:
+  #     - id: gitlabci-lint
+  #     # args: ["https://custom.gitlab.host.com"]
