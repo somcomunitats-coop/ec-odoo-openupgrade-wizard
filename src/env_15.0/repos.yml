@@ -6,7 +6,7 @@
     defaults:
         depth: 1
     remotes:
-        odoo: https://github.com/odoo/odoo
+        odoo: https://git.coopdevs.org/coopdevs/odoo/OCB
     target: odoo 15.0-target
     merges:
         - odoo 15.0
@@ -23,19 +23,35 @@
     target: OCA 15.0-target
     merges:
         - OCA 15.0
-
-
+    
 ##############################################################################
 ## OCA Repositories
 ##############################################################################
-    
-./src/OCA/web:
+
+./src/OCA/bank-statement-import:
     defaults:
         depth: 1
     remotes:
-        OCA: https://github.com/OCA/web
+        OCA: https://github.com/OCA/bank-statement-import
     target: OCA 15.0-target
     merges:
         - OCA 15.0
-    
 
+##############################################################################
+## CUSTOM Repositories
+##############################################################################
+
+./src/coopdevs/comunitats-energetiques/odoo-ce:
+    defaults:
+        depth: 1
+    remotes:
+        coopdevs: https://git.coopdevs.org/coopdevs/comunitats-energetiques/odoo-ce
+    target: coopdevs migration/15.0-target
+    merges:
+        - coopdevs migration/15.0
+
+#TODO: Create CRM utils repo and reference here
+#TODO: Add back ported modules:
+# odoo14-addon-base-user-role-company==14.0.2.0.2
+# odoo14-addon-community-maps==14.0.0.2.8
+# odoo14-addon-metadata==14.0.0.0.1
