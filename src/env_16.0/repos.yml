@@ -49,6 +49,13 @@
     target: coopdevs migration/16.0-target
     merges:
         - coopdevs migration/16.0
-
-#TODO: Create CRM utils repo and reference here
+# TODO: odoo-ec-extra can be deployed via pypi if we have the packages already created
+./src/somcomunitats/comunitats-energetiques/odoo-ec-extra:
+    defaults:
+        depth: 1
+    remotes:
+        somcomunitats: https://github.com/somcomunitats-coop/odoo-ec-extra
+    target: somcomunitats 16.0-target
+    merges:
+        - somcomunitats 16.0
 

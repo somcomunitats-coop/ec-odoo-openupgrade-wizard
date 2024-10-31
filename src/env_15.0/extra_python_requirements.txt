@@ -8,36 +8,6 @@ git+https://github.com/OCA/openupgradelib@master#egg=openupgradelib
 odoorpc
 mako
 
-# TODO: Add metadata dependency
-
-# TODO: Work on commented modules
-
-# This only works in pip install git+https://github.com/DaniilDigtyar/cooperative@14.0-ADD-l10n-es-cooperator#egg=odoo14-addon-l10n-es-cooperator\&subdirectory=setup/l10n_es_cooperator
-
-# git+https://github.com/OCA/bank-statement-import@14.0#egg=odoo14-addon-account-statement-import-txt-xlsx&subdirectory=setup/account_statement_import_txt_xlsx
-
-#odoo-addon-account-menu==undefined
-
-#odoo-addon-base-future-response==undefined
-
-#odoo-addon-energy-communities==undefined
-
-#odoo-addon-energy-communities_api==undefined
-
-#odoo-addon-energy-communities-cooperator==undefined
-
-#odoo-addon-energy-communities-crm==undefined
-
-#odoo-addon-energy-communities-mass-mailing==undefined
-
-#odoo-addon-energy-selfconsumption==undefined
-
-#odoo-addon-mass-editing==undefined
-
-#odoo-addon-web-access-rule-buttons==undefined
-
-#odoo-addon-web-decimal-numpad-dot==undefined
-
 odoo-addon-account-asset-management==15.0.1.2.1.2
 odoo-addon-account-banking-pain-base==15.0.2.0.2.9
 odoo-addon-account-banking-sepa-credit-transfer==15.0.2.0.4
@@ -59,7 +29,6 @@ odoo-addon-base-location==15.0.1.0.3.1
 odoo-addon-base-rest-auth-api-key==15.0.1.0.0.1
 odoo-addon-base-rest==15.0.1.2.2.1
 odoo-addon-contract-payment-mode==15.0.1.1.1.3
-#odoo-addon-cooperator-website==undefined
 odoo-addon-date-range==15.0.1.1.1.3
 odoo-addon-l10n-es-account-asset==15.0.1.0.2
 odoo-addon-l10n-es-account-banking-sepa-fsdd==15.0.1.0.0.6
@@ -98,37 +67,34 @@ python-slugify==8.0.1
 Faker==18.13.0
 
 ## cooperator_account_banking_mandate
-odoo-addon-cooperator==15.0.0.0.1
+# odoo-addon-cooperator==15.0.0.0.1->backported
 odoo-addon-account-banking-mandate==15.0.2.1.4
 odoo-addon-account-banking-sepa-direct-debit==15.0.2.3.1
 
 ## cooperator_account_payment
-# odoo-addon-cooperator==15.0.0.0.1
+# odoo-addon-cooperator==15.0.0.0.1->backported
 odoo-addon-account-payment-partner==15.0.1.3.2
 
 ## energy_communities
-# odoo-addon-account-banking-mandate==15.0.2.1.4
+# odoo-addon-account-banking-mandate==15.0.2.1.4->duplicated
 odoo-addon-account-lock-date-update==15.0.1.0.2
 odoo-addon-account-multicompany-easy-creation==15.0.1.0.0.5
 odoo-addon-account-payment-order==15.0.2.7.1.1
-# odoo14-addon-account-reconciliation-widget==14.0.2.0.2 No existe
 odoo-addon-auth-api-key==15.0.1.1.1.6
 odoo-addon-auth-oidc==15.0.1.1.0.3
 odoo-addon-base-rest==15.0.1.2.2.1
 odoo-addon-base-technical-features==15.0.1.1.0.3
 odoo-addon-base-user-role==15.0.0.4.2
-# odoo14-addon-base-user-role-company==14.0.2.0.2 En proceso
-# odoo14-addon-community-maps==14.0.0.2.8 En proceso
+# odoo14-addon-base-user-role-company==14.0.2.0.2 >backported
+# odoo14-addon-community-maps==14.0.0.2.8->backported
 odoo-addon-l10n-es-aeat-sii-oca==15.0.2.21.1
 odoo-addon-mail-multicompany==15.0.0.1.0.3
-# odoo14-addon-metadata==14.0.0.0.1 En proceso
+# odoo14-addon-metadata==14.0.0.0.1->backported
 odoo-addon-partner-firstname==15.0.1.1.0.4
 odoo-addon-partner-multi-company==15.0.1.1.0.3
 odoo-addon-queue-job==15.0.2.3.10
 
 ## energy_communities_api
-# odoo14-addon-auth-jwt==14.0.2.1.2 No existe, probar si podemos omitirlo
-# odoo14-addon-base-rest-auth-jwt==14.0.1.1.0 No existe
 odoo-addon-base-rest-pydantic==15.0.4.3.2.1
 odoo-addon-pydantic==15.0.1.1.2.1
 
@@ -137,31 +103,29 @@ extendable-pydantic==0.0.6
 email_validator==2.2.0
 
 ## energy_communities_cooperator
-# odoo-addon-account-multicompany-easy-creation==15.0.1.0.0.5
-# odoo14-addon-cooperator==14.0.2.1.1 En proceso
-# odoo14-addon-l10n-es-cooperator==14.0.0.1.1 En proceso
+# odoo-addon-account-multicompany-easy-creation==15.0.1.0.0.5->duplicated
+# odoo14-addon-cooperator==14.0.2.1.1 >backported
+# odoo14-addon-l10n-es-cooperator==14.0.0.1.1->backported
 
 ## energy_communities_crm
-# odoo14-addon-crm-metadata==14.0.1.0.0 En proceso
-# odoo14-addon-crm-metadata-rest-api==14.0.1.0.2 En proceso
-# odoo14-addon-crm-rest-api==14.0.1.0.2 En proceso
+# odoo14-addon-crm-metadata==14.0.1.0.0 >backported
+# odoo14-addon-crm-metadata-rest-api==14.0.1.0.2->backported
+# odoo14-addon-crm-rest-api==14.0.1.0.2 >backported
 
 ## energy_communities_mass_mailing
 odoo-addon-mass-mailing-partner==15.0.1.0.0.7
 odoo-addon-mass-mailing-list-dynamic==15.0.1.0.0.9
 
 ## energy_project
-# odoo14-addon-cooperator==14.0.2.1.1 En proceso
-# odoo-addon-account-banking-mandate==15.0.2.1.4
+# odoo14-addon-cooperator==14.0.2.1.1->backported
+# odoo-addon-account-banking-mandate==15.0.2.1.4->backported
 
 ## energy_selfconsumption
-# odoo-addon-contract==15.0.1.11.1.1 En proceso
-# odoo14-addon-contract-queue-job==14.0.1.0.1.dev3 En proceso
-# odoo14-addon-contract-mandate==14.0.1.0.1 En proceso
+odoo-addon-contract==15.0.1.11.1.1
 odoo-addon-contract-variable-quantity==15.0.1.0.0.7
 odoo-addon-web-m2x-options==15.0.1.1.1
 odoo-addon-report-csv==15.0.2.0.0.2
 
 pandas==2.0.3
 numpy==1.24.4
-# openupgradelib==3.6.1
+# openupgradelib==3.6.1 -> duplicated

@@ -50,8 +50,29 @@
     merges:
         - coopdevs migration/15.0
 
-#TODO: Create CRM utils repo and reference here
-#TODO: Add back ported modules:
-# odoo14-addon-base-user-role-company==14.0.2.0.2
-# odoo14-addon-community-maps==14.0.0.2.8
-# odoo14-addon-metadata==14.0.0.0.1
+./src/somitcoop/community-maps:
+    defaults:
+        depth: 1
+    remotes:
+        somitcoop: https://gitlab.com/somitcoop/erp-research/community-maps
+    target: somitcoop 15.0-target
+    merges:
+        - somitcoop 15.0
+
+./src/somcomunitats/migration-backported-modules:
+    defaults:
+        depth: 1
+    remotes:
+        somcomunitats: https://github.com/somcomunitats-coop/migration-backported-modules
+    target: somcomunitats 15.0-target
+    merges:
+        - somcomunitats 15.0
+
+./src/somcomunitats/comunitats-energetiques/odoo-ec-extra:
+    defaults:
+        depth: 1
+    remotes:
+        somcomunitats: https://github.com/somcomunitats-coop/odoo-ec-extra
+    target: somcomunitats 15.0-target
+    merges:
+        - somcomunitats 15.0
