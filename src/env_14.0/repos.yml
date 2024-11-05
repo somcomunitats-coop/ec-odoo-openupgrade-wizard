@@ -46,8 +46,8 @@
         depth: 1
     remotes:
         coopdevs: https://git.coopdevs.org/coopdevs/comunitats-energetiques/odoo-ce
-    target: coopdevs 14.0-target
+    target: coopdevs migration/14.0-target
     merges:
-        - coopdevs 14.0
+        - coopdevs migration/14.0
 
 #TODO: Create CRM utils repo and reference here

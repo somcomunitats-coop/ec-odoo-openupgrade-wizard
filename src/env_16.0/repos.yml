@@ -49,6 +49,16 @@
     target: coopdevs migration/16.0-target
     merges:
         - coopdevs migration/16.0
+
+./src/somitcoop/community-maps:
+    defaults:
+        depth: 1
+    remotes:
+        somitcoop: https://gitlab.com/somitcoop/erp-research/community-maps
+    target: somitcoop 16.0-target
+    merges:
+        - somitcoop 16.0
+
 # TODO: odoo-ec-extra can be deployed via pypi if we have the packages already created
 ./src/somcomunitats/comunitats-energetiques/odoo-ec-extra:
     defaults:

@@ -64,15 +64,6 @@
         depth: 1
     remotes:
         somcomunitats: https://github.com/somcomunitats-coop/migration-backported-modules
-    target: somcomunitats 15.0-target
+    target: somcomunitats main-target
     merges:
-        - somcomunitats 15.0
-
-./src/somcomunitats/comunitats-energetiques/odoo-ec-extra:
-    defaults:
-        depth: 1
-    remotes:
-        somcomunitats: https://github.com/somcomunitats-coop/odoo-ec-extra
-    target: somcomunitats 15.0-target
-    merges:
-        - somcomunitats 15.0
+        - somcomunitats main
