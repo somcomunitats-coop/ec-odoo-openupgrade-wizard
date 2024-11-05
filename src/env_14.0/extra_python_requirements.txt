@@ -117,7 +117,7 @@ email_validator==2.2.0
 ## energy_communities_cooperator
 # odoo14-addon-account-multicompany-easy-creation==14.0.1.0.1.dev2
 # odoo14-addon-cooperator==14.0.2.1.1
-odoo14-addon-l10n-es-cooperator==14.0.0.1.1
+# odoo14-addon-l10n-es-cooperator==14.0.0.1.1
 
 ## energy_communities_crm
 odoo14-addon-crm-metadata==14.0.1.0.0

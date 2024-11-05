@@ -50,4 +50,12 @@
     merges:
         - coopdevs migration/14.0
 
-#TODO: Create CRM utils repo and reference here
+./src/somcomunitats/migration-backported-modules:
+    defaults:
+        depth: 1
+    remotes:
+        somcomunitats: https://github.com/somcomunitats-coop/migration-backported-modules
+    target: somcomunitats migration/15.0-target
+    merges:
+        - somcomunitats migration/15.0
+

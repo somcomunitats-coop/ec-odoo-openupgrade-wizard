@@ -11,17 +11,18 @@ mako
 ## modules to uninstall (from v16)
 #odoo-addon-account-menu==undefined No existe
 #odoo-addon-account-statement-import-txt-xlsx==undefined-No-existe
-#odoo-addon-base-future-response==undefined No existe
+#odoo-addon-base-rest-auth-jwt==undefined No existe
 #odoo-addon-mass-editing==undefined No existe
 #odoo-addon-web-access-rule-buttons==undefined No existe
 #odoo-addon-account-reconciliation-widget==undefined No existe
 #odoo-addon-web-decimal-numpad-dot==undefined No existe
-#odoo-addon-base-rest-auth-jwt==undefined No existe
+#odoo-addon-base-future-response==undefined No existe
 
 ## modules to deactivate and reactivate after migration
 #odoo-addon-cooperator-website==undefined
 #odoo-addon-contract-queue-job==undefined
 #odoo-addon-contract-mandate==undefined
+#auth_jwt
 
 odoo-addon-account-asset-management==16.0.1.2.5.2
 odoo-addon-account-banking-pain-base==16.0.1.2.1.1
