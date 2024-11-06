@@ -54,6 +54,6 @@ RUN pip3 install --upgrade pip \
 # <OOW> Get local user id and set it to the odoo user
 ARG LOCAL_USER_ID
 
-# RUN useradd --uid $LOCAL_USER_ID --non-unique odoo
+RUN useradd --uid $LOCAL_USER_ID --non-unique odoo
 
 USER odoo
