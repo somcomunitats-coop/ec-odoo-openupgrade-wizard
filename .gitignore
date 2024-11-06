@@ -8,6 +8,7 @@ dist
 /tests/data/output/*
 log/
 _auto_generated_odoo.cfg
-backups/
+backups/*
+filestore/*
 dumpdb/
 analysis.html
