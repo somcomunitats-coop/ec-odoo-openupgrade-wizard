@@ -1,5 +1,5 @@
 # <OOW> : Copy of https://github.com/odoo/odoo/blob/15.0/setup/package.dfsrc
-FROM debian:buster
+FROM debian:bullseye
 
 RUN apt-get update && \
     apt-get install -y locales && \
@@ -33,6 +33,16 @@ RUN apt-get update -qq \
     && xargs apt-get install -y --no-install-recommends <extra_debian_requirements.txt \
     && rm -rf /var/lib/apt/lists/*
 
+ENV ODOO_VERSION 15.0
+ARG ODOO_RELEASE=20211006
+ARG ODOO_SHA=fe6467ecb51a5b5bf831a2c1021e77b2a890a01d
+
+RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
+    && echo "${ODOO_SHA} odoo.deb" | sha1sum -c - \
+    && apt-get update \
+    && apt-get -y install --no-install-recommends ./odoo.deb \
+    && rm -rf /var/lib/apt/lists/* odoo.deb
+
 # <OOW> Install Python librairies
 COPY ./src/odoo/requirements.txt /odoo_python_requirements.txt
 COPY extra_python_requirements.txt /extra_python_requirements.txt
@@ -44,6 +54,6 @@ RUN pip3 install --upgrade pip \
 # <OOW> Get local user id and set it to the odoo user
 ARG LOCAL_USER_ID
 
-RUN useradd --uid $LOCAL_USER_ID --non-unique odoo
+# RUN useradd --uid $LOCAL_USER_ID --non-unique odoo
 
 USER odoo
