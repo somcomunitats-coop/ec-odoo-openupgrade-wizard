@@ -14,16 +14,16 @@ ENV LC_ALL C.UTF-8
 RUN apt-get update -qq &&  \
     apt-get upgrade -qq -y && \
     apt-get install \
-        postgresql \
-        postgresql-server-dev-all \
-        postgresql-client \
-        adduser \
-        libldap2-dev \
-        libsasl2-dev \
-        python3-pip \
-        python3-wheel \
-        build-essential \
-        python3 -y && \
+    postgresql \
+    postgresql-server-dev-all \
+    postgresql-client \
+    adduser \
+    libldap2-dev \
+    libsasl2-dev \
+    python3-pip \
+    python3-wheel \
+    build-essential \
+    python3 -y && \
     rm -rf /var/lib/apt/lists/*
 
 # <OOW> Install Debian packages
@@ -32,16 +32,6 @@ RUN apt-get update -qq \
     && apt-get install -y git \
     && xargs apt-get install -y --no-install-recommends <extra_debian_requirements.txt \
     && rm -rf /var/lib/apt/lists/*
-
-ENV ODOO_VERSION 15.0
-ARG ODOO_RELEASE=20211006
-ARG ODOO_SHA=fe6467ecb51a5b5bf831a2c1021e77b2a890a01d
-
-RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
-    && echo "${ODOO_SHA} odoo.deb" | sha1sum -c - \
-    && apt-get update \
-    && apt-get -y install --no-install-recommends ./odoo.deb \
-    && rm -rf /var/lib/apt/lists/* odoo.deb
 
 # <OOW> Install Python librairies
 COPY ./src/odoo/requirements.txt /odoo_python_requirements.txt

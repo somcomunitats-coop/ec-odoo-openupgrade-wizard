@@ -37,6 +37,204 @@
     merges:
         - OCA 15.0
 
+./src/OCA/l10n-spain:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/l10n-spain
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/account-payment:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/account-payment
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/account-financial-tools:  
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/account-financial-tools
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/account-financial-reporting:  
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/account-financial-reporting
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/account-fiscal-rule:  
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/account-fiscal-rule
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/account-invoicing:  
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/account-invoicing
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/community-data-files:  
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/community-data-files
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+        
+./src/OCA/partner-contact:  
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/partner-contact
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+        
+./src/OCA/rest-framework:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/rest-framework
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/contract:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/contract
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/server-ux:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/server-ux
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/social:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/social
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/social:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/social
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+    
+./src/OCA/mis-builder:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/mis-builder
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/queue:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/queue
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+        
+./src/OCA/reporting-engine:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/reporting-engine
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+        
+./src/OCA/web:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/web
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/bank-payment:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/bank-payment
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+        
+./src/OCA/multi-company:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/multi-company
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
+./src/OCA/server-auth:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/server-auth
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+        
+./src/OCA/rest-framework:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/rest-framework
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+        
+./src/OCA/server-backend:
+    defaults:
+        depth: 1
+    remotes:
+        OCA: https://github.com/OCA/server-backend
+    target: OCA 15.0-target
+    merges:
+        - OCA 15.0
+
 ##############################################################################
 ## CUSTOM Repositories
 ##############################################################################
