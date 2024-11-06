@@ -66,7 +66,7 @@ odoo-addon-l10n-es-partner==16.0.2.2.0
 odoo-addon-l10n-es-toponyms==16.0.1.0.0.4
 odoo-addon-l10n-es-vat-book==16.0.1.4.0.3
 odoo-addon-mail-tracking==16.0.1.0.5.6
-odoo-addon-mass-mailing-list-dynamic==16.0.1.0.0.9
+odoo-addon-mass-mailing-list-dynamic==16.0.1.0.0.13
 odoo-addon-mis-builder-budget==16.0.5.1.0
 odoo-addon-mis-builder==16.0.5.1.9.9
 odoo-addon-partner-contact-access-link==16.0.1.1.0.4

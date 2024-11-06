@@ -14,6 +14,7 @@ ENV LC_ALL C.UTF-8
 RUN apt-get update -qq &&  \
     apt-get upgrade -qq -y && \
     apt-get install \
+        unzip \
         postgresql \
         postgresql-server-dev-all \
         postgresql-client \
@@ -33,15 +34,14 @@ RUN apt-get update -qq \
     && xargs apt-get install -y --no-install-recommends <extra_debian_requirements.txt \
     && rm -rf /var/lib/apt/lists/*
 
-ENV ODOO_VERSION 15.0
-ARG ODOO_RELEASE=20211006
-ARG ODOO_SHA=fe6467ecb51a5b5bf831a2c1021e77b2a890a01d
-
-RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
-    && echo "${ODOO_SHA} odoo.deb" | sha1sum -c - \
-    && apt-get update \
-    && apt-get -y install --no-install-recommends ./odoo.deb \
-    && rm -rf /var/lib/apt/lists/* odoo.deb
+# Install Odoo
+COPY ./src/odoo-core-installer.zip .
+RUN unzip /odoo-core-installer.zip
+RUN mv /odoo /odoo-core-installer
+RUN cp -r /odoo-core-installer/setup setup
+RUN python3 odoo-core-installer/setup.py install
+RUN rm -rf odoo-core-installer
+RUN rm -rf setup
 
 # <OOW> Install Python librairies
 COPY ./src/odoo/requirements.txt /odoo_python_requirements.txt

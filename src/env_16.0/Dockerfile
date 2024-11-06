@@ -1,5 +1,5 @@
 # <OOW> : Copy of https://github.com/odoo/odoo/blob/16.0/setup/package.dfsrc
-FROM debian:bullseye
+FROM debian:bookworm
 
 RUN apt-get update && \
     apt-get install -y locales && \
@@ -14,6 +14,7 @@ ENV LC_ALL C.UTF-8
 RUN apt-get update -qq &&  \
     apt-get upgrade -qq -y && \
     apt-get install \
+        unzip \
         postgresql \
         postgresql-server-dev-all \
         postgresql-client \
@@ -33,23 +34,26 @@ RUN apt-get update -qq \
     && xargs apt-get install -y --no-install-recommends <extra_debian_requirements.txt \
     && rm -rf /var/lib/apt/lists/*
 
+# upgrade setuptools for python odoo setup to work
+RUN \
+    python3 -m pip install -U --break-system-packages --no-cache-dir setuptools
+
 # Install Odoo
-ENV ODOO_VERSION 16.0
-ARG ODOO_RELEASE=20241029
-ARG ODOO_SHA=ac6b44b70f9b52d47818aa422c7e4d02cba9b05d
-RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/odoo_${ODOO_VERSION}.${ODOO_RELEASE}_all.deb \
-    && echo "${ODOO_SHA} odoo.deb" | sha1sum -c - \
-    && apt-get update \
-    && apt-get -y install --no-install-recommends ./odoo.deb \
-    && rm -rf /var/lib/apt/lists/* odoo.deb
+COPY ./src/odoo-core-installer.zip .
+RUN unzip /odoo-core-installer.zip
+RUN mv /odoo /odoo-core-installer
+RUN cp -r /odoo-core-installer/setup setup
+RUN python3 odoo-core-installer/setup.py install
+RUN rm -rf odoo-core-installer
+RUN rm -rf setup
 
 # <OOW> Install Python librairies
 COPY ./src/odoo/requirements.txt /odoo_python_requirements.txt
 COPY extra_python_requirements.txt /extra_python_requirements.txt
-RUN pip3 install --upgrade pip \
-    && python3 -m pip install --no-cache-dir setuptools-scm \
-    && python3 -m pip install --no-cache-dir -r /odoo_python_requirements.txt \
-    && python3 -m pip install --no-cache-dir -r /extra_python_requirements.txt
+RUN \
+    python3 -m pip install --break-system-packages --no-cache-dir setuptools-scm \
+    && python3 -m pip install --break-system-packages --no-cache-dir -r /odoo_python_requirements.txt \
+    && python3 -m pip install --break-system-packages --no-cache-dir -r /extra_python_requirements.txt
 
 # <OOW> Get local user id and set it to the odoo user
 ARG LOCAL_USER_ID

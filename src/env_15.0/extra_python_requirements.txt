@@ -53,7 +53,7 @@ odoo-addon-mass-mailing-list-dynamic==15.0.1.0.0.9
 odoo-addon-mis-builder-budget==15.0.4.0.2.9
 odoo-addon-mis-builder==15.0.4.1.5.8
 odoo-addon-partner-contact-access-link==15.0.1.1.1
-odoo-addon-queue-job==15.0.2.3.9
+odoo-addon-queue-job==15.0.2.3.10
 odoo-addon-report-py3o==15.0.1.0.0.8
 odoo-addon-report-xlsx==15.0.1.1.5
 odoo-addon-web-advanced-search==15.0.1.1.5.2
