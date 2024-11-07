@@ -38,7 +38,7 @@ odoo-addon-l10n-es-aeat-mod115==15.0.1.0.0.9
 odoo-addon-l10n-es-aeat-mod123==15.0.1.0.1.6
 odoo-addon-l10n-es-aeat-mod190==15.0.2.0.1
 odoo-addon-l10n-es-aeat-mod347==15.0.1.9.0
-odoo-addon-l10n-es-aeat-mod303==15.0.3.7.1.1
+odoo-addon-l10n-es-aeat-mod303==15.0.3.7.2
 odoo-addon-l10n-es-aeat-mod390==15.0.2.5.0.1
 odoo-addon-l10n-es-aeat==15.0.3.1.1.2
 odoo-addon-l10n-es-facturae==15.0.1.9.0.1
