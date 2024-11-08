@@ -36,7 +36,7 @@ for module_name in modules_to_uninstall:
 env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
-payments = env['account.payment'].search([])
+payments = env['account.payment'].search([('payment_line_ids', '=', False)])
 for payment in payments:
     if payment.payment_order_id:
         if len(payment.payment_line_ids) == 0:
@@ -45,3 +45,15 @@ for payment in payments:
 # Confirma los cambios
 env.cr.commit()
 _logger.info("Payments without payment lines deleted.")
+
+companies = env['res.company'].search([])
+
+for company in companies:
+
+    wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create()
+    wizard.action_find_records()
+    wizard.action_update_records()
+
+# Confirma los cambios
+env.cr.commit()
+_logger.info("Update chart templates of all companies")
