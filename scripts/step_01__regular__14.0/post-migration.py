@@ -37,7 +37,7 @@ env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
 try:
-    payments = env['account.payment'].search([('payment_line_ids', '=', False),('payment_order_id', '!=', False)])
+    payments = env['account.payment'].search([('payment_order_id', '!=', False)])
 except Exception as e:
     _logger.error(f"search account.payment payment_line_ids = False and payment_order_id != False: {e}")
 
