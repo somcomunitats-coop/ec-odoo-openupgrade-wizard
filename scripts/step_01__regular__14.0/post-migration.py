@@ -35,3 +35,13 @@ for module_name in modules_to_uninstall:
 # Confirma los cambios
 env.cr.commit()
 _logger.info("Module uninstallation completed.")
+
+payments = env['account.payment'].search([])
+for payment in payments:
+    if payment.payment_order_id:
+        if len(payment.payment_line_ids) == 0:
+            payment.unlink()
+
+# Confirma los cambios
+env.cr.commit()
+_logger.info("Payments without payment lines deleted.")
