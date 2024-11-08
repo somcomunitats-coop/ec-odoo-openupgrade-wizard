@@ -37,9 +37,9 @@ env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
 try:
-    payments = env['account.payment'].search([('payment_order_id', '!=', False)])
+    payments = env['account.payment'].search([])
 except Exception as e:
-    _logger.error(f"search account.payment payment_line_ids = False and payment_order_id != False: {e}")
+    _logger.error(f"search account.payment {e}")
 
 _logger.info(f"Check payments : {len(payments)}")
 for payment in payments:
@@ -61,7 +61,7 @@ except Exception as e:
 _logger.info(f"Check companies : {len(companies)}")
 for company in companies:
     try:
-        wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create()
+        wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create({})
         wizard.action_find_records()
         wizard.action_update_records()
         _logger.info(f"Update chart templates for companie : {company.id} - {company.name}")
