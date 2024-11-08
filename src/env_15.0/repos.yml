@@ -68,11 +68,11 @@
     merges:
         - somcomunitats main
 
-#./src/somcomunitats/odoo-ec-extra:
-#    defaults:
-#        depth: 1
-#    remotes:
-#        somcomunitats: https://github.com/somcomunitats-coop/odoo-ec-extra
-#    target: somcomunitats 15.0-target
-#    merges:
-#        - somcomunitats 15.0
+./src/somcomunitats/odoo-ec-extra:
+    defaults:
+        depth: 1
+    remotes:
+        somcomunitats: https://github.com/somcomunitats-coop/odoo-ec-extra
+    target: somcomunitats 15.0-target
+    merges:
+        - somcomunitats 15.0
