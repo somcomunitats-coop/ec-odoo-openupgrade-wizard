@@ -44,6 +44,7 @@ except Exception as e:
 _logger.info(f"Check payments : {len(payments)}")
 for payment in payments:
     try:
+        _logger.error(f"{__dict__(payment)}")
         if len(payment.payment_line_ids) == 0:
             _logger.info(f"Delete payment : {payment.id}")
             payment.unlink()
@@ -59,10 +60,18 @@ except Exception as e:
     _logger.error(f"search res.company: {e}")
 
 _logger.info(f"Check companies : {len(companies)}")
+
+chart_template_id = env['account.chart.template'].search([('name','=','PGCE PYMEs 2008')])[0].id
+fields = env['ir.model.fields'].search([('model','=','account.account.template'), ('name','in',['code','user_type_id'])])
+
 for company in companies:
     try:
-        wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create({})
-        wizard.action_find_records()
+        wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create({
+            "chart_template_id": chart_template_id
+        })
+        for f in fields:
+            wizard.account_field_ids = [(3, f.id)]
+        wizard.action_find_records() # code = False  user_type_id = False
         wizard.action_update_records()
         _logger.info(f"Update chart templates for companie : {company.id} - {company.name}")
     except Exception as e:
