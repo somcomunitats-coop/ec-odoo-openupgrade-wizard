@@ -36,7 +36,11 @@ for module_name in modules_to_uninstall:
 env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
-payments = env['account.payment'].search([('payment_line_ids', '=', False),('payment_order_id', '!=', False)])
+try:
+    payments = env['account.payment'].search([('payment_line_ids', '=', False),('payment_order_id', '!=', False)])
+except Exception as e:
+    _logger.error(f"search account.payment payment_line_ids = False and payment_order_id != False: {e}")
+
 _logger.info(f"Check payments : {len(payments)}")
 for payment in payments:
     try:
@@ -49,8 +53,11 @@ for payment in payments:
 # Confirma los cambios
 env.cr.commit()
 _logger.info("Payments without payment lines deleted.")
+try:
+    companies = env['res.company'].search([])
+except Exception as e:
+    _logger.error(f"search res.company: {e}")
 
-companies = env['res.company'].search([])
 _logger.info(f"Check companies : {len(companies)}")
 for company in companies:
     try:
