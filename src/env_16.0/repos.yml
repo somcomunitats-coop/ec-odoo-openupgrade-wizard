@@ -55,9 +55,9 @@
         depth: 1
     remotes:
         somitcoop: https://gitlab.com/somitcoop/erp-research/community-maps
-    target: somitcoop 16.0-target
+    target: somitcoop 16.0-initial-target
     merges:
-        - somitcoop 16.0
+        - somitcoop 16.0-initial
 
 # TODO: odoo-ec-extra can be deployed via pypi if we have the packages already created
 ./src/somcomunitats/comunitats-energetiques/odoo-ec-extra:
