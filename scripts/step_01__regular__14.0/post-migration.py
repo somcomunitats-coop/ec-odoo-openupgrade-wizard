@@ -36,23 +36,30 @@ for module_name in modules_to_uninstall:
 env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
-payments = env['account.payment'].search([('payment_line_ids', '=', False)])
+payments = env['account.payment'].search([('payment_line_ids', '=', False),('payment_order_id', '!=', False)])
+_logger.info(f"Check payments : {len(payments)}")
 for payment in payments:
-    if payment.payment_order_id:
+    try:
         if len(payment.payment_line_ids) == 0:
+            _logger.info(f"Delete payment : {payment.id}")
             payment.unlink()
+    except Exception as e:
+        _logger.error(f"Error delete payment {payment.id}: {e}")
 
 # Confirma los cambios
 env.cr.commit()
 _logger.info("Payments without payment lines deleted.")
 
 companies = env['res.company'].search([])
-
+_logger.info(f"Check companies : {len(companies)}")
 for company in companies:
-
-    wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create()
-    wizard.action_find_records()
-    wizard.action_update_records()
+    try:
+        wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create()
+        wizard.action_find_records()
+        wizard.action_update_records()
+        _logger.info(f"Update chart templates for companie : {company.id} - {company.name}")
+    except Exception as e:
+        _logger.error(f"Error update chart templates {company.id} - {company.name}: {e}")
 
 # Confirma los cambios
 env.cr.commit()
