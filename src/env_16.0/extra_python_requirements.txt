@@ -17,6 +17,7 @@ mako
 #odoo-addon-account-reconciliation-widget==undefined No existe
 #odoo-addon-web-decimal-numpad-dot==undefined No existe
 #odoo-addon-base-future-response==undefined No existe
+#base_rest_base_structure
 
 ## modules to deactivate and reactivate after migration
 #odoo-addon-cooperator-website==undefined
@@ -55,7 +56,7 @@ odoo-addon-l10n-es-aeat-mod115==16.0.1.0.1.4
 odoo-addon-l10n-es-aeat-mod123==16.0.2.2.0
 odoo-addon-l10n-es-aeat-mod190==16.0.2.0.0.2
 odoo-addon-l10n-es-aeat-mod347==16.0.1.7.3.1
-odoo-addon-l10n-es-aeat-mod303==16.0.2.6.1
+odoo-addon-l10n-es-aeat-mod303==16.0.2.7.2
 odoo-addon-l10n-es-aeat-mod390==16.0.2.6.0.1
 odoo-addon-l10n-es-aeat==16.0.3.0.1
 odoo-addon-l10n-es-facturae==16.0.1.8.0.4
