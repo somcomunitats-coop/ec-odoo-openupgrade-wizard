@@ -10,10 +10,13 @@ modules_to_uninstall = [
     "account_menu",
     "account_statement_import_txt_xlsx",
     "base_rest_auth_jwt",
+    "base_contextvars",
     "mass_editing",
     "web_access_rule_buttons",
     "account_reconciliation_widget",
     "web_decimal_numpad_dot",
+    "auth_jwt",
+    "energy_communities_api",
     "base_future_response",
     "cooperator_website",
     "contract_queue_job",
@@ -63,7 +66,7 @@ for company in companies:
         wizard = (
             env["wizard.update.charts.accounts"]
             .with_context(default_company_id=company.id)
-            .create({"chart_template_id": chart_template_id})
+            .create({"chart_template_id": chart_template_id, 'recreate_xml_ids': True})
         )
         for f in fields:
             wizard.account_field_ids = [(3, f.id)]

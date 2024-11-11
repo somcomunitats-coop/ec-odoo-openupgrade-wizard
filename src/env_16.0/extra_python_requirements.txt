@@ -87,6 +87,7 @@ python-slugify==8.0.1
 Faker==18.13.0
 odoo-addon-partner-contact-gender==16.0.1.0.0.11
 odoo-addon-partner-contact-birthdate==16.0.1.0.0.11
+odoo-addon-multi-step-wizard==16.0.1.0.0.11
 
 ## cooperator_account_banking_mandate
 odoo-addon-cooperator==16.0.1.1.0.4
