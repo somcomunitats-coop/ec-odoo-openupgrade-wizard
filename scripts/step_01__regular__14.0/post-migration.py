@@ -10,6 +10,7 @@ modules_to_uninstall = [
     "account_menu",
     "account_statement_import_txt_xlsx",
     "base_rest_auth_jwt",
+    "base_contextvars",
     "mass_editing",
     "web_access_rule_buttons",
     "account_reconciliation_widget",
