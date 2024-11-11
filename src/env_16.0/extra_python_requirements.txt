@@ -23,6 +23,7 @@ mako
 #odoo-addon-cooperator-website==undefined -> no se puede desintalar
 #odoo-addon-contract-queue-job==undefined
 #odoo-addon-contract-mandate==undefined
+#energy_communities_api
 #auth_jwt
 
 odoo-addon-account-asset-management==16.0.1.2.5.2

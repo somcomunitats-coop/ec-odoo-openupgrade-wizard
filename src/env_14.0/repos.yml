@@ -55,7 +55,7 @@
         depth: 1
     remotes:
         somcomunitats: https://github.com/somcomunitats-coop/migration-backported-modules
-    target: somcomunitats migration/15.0-target
+    target: somcomunitats migration/14.0-target
     merges:
-        - somcomunitats migration/15.0
+        - somcomunitats migration/14.0
 
