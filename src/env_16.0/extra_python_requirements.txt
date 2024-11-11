@@ -38,7 +38,7 @@ odoo-addon-account-payment-return-import-iso20022==16.0.1.0.2
 odoo-addon-account-payment-return-import==16.0.1.0.1.4
 odoo-addon-account-payment-return==16.0.1.1.1.1
 odoo-addon-account-payment-sale==16.0.1.0.3
-odoo-addon-account-statement-import-sheet-file==16.0.1.1.2.4
+odoo-addon-account-statement-import-sheet-file==16.0.1.1.2.3
 odoo-addon-account-tax-balance==16.0.1.1.2
 odoo-addon-base-bank-from-iban==16.0.2.0.2
 odoo-addon-base-iso3166==16.0.1.0.0.9
