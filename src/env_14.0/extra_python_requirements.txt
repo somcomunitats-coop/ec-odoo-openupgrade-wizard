@@ -76,7 +76,7 @@ python-keycloak==2.9.0
 python-slugify==8.0.1
 
 ## cooperator_account_banking_mandate
-odoo14-addon-cooperator==14.0.2.1.1
+#odoo14-addon-cooperator==14.0.2.1.1
 odoo14-addon-account-banking-mandate==14.0.2.1.0
 odoo14-addon-account-banking-sepa-direct-debit==14.0.2.1.3
 

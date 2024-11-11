@@ -23,8 +23,8 @@ modules_to_uninstall = [
 for module_name in modules_to_uninstall:
     try:
         # Desinstala el módulo
-        module = env['ir.module.module'].search([('name', '=', module_name)], limit=1)
-        if module and module.state == 'installed':
+        module = env["ir.module.module"].search([("name", "=", module_name)], limit=1)
+        if module and module.state == "installed":
             _logger.info(f"Uninstalling module: {module_name}")
             module.button_immediate_uninstall()
         else:
@@ -36,47 +36,60 @@ for module_name in modules_to_uninstall:
 env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
-try:
-    payments = env['account.payment'].search([])
-except Exception as e:
-    _logger.error(f"search account.payment {e}")
-
-_logger.info(f"Check payments : {len(payments)}")
-for payment in payments:
-    try:
-        _logger.error(f"{__dict__(payment)}")
-        if len(payment.payment_line_ids) == 0:
-            _logger.info(f"Delete payment : {payment.id}")
-            payment.unlink()
-    except Exception as e:
-        _logger.error(f"Error delete payment {payment.id}: {e}")
-
+# Not working
+# try:
+#     payments = env['account.payment'].search([])
+# except Exception as e:
+#     _logger.error(f"search account.payment {e}")
+# _logger.info(f"Check payments : {len(payments)}")
+# for payment in payments:
+#     try:
+#         _logger.error(f"{__dict__(payment)}")
+#         if len(payment.payment_line_ids) == 0:
+#             _logger.info(f"Delete payment : {payment.id}")
+#             payment.unlink()
+#     except Exception as e:
+#         _logger.error(f"Error delete payment {payment.id}: {e}")
 # Confirma los cambios
-env.cr.commit()
-_logger.info("Payments without payment lines deleted.")
+# _logger.info("Payments without payment lines deleted.")
+
+# Update chart of accounts
 try:
-    companies = env['res.company'].search([])
+    companies = env["res.company"].search([])
 except Exception as e:
     _logger.error(f"search res.company: {e}")
 
 _logger.info(f"Check companies : {len(companies)}")
 
-chart_template_id = env['account.chart.template'].search([('name','=','PGCE PYMEs 2008')])[0].id
-fields = env['ir.model.fields'].search([('model','=','account.account.template'), ('name','in',['code','user_type_id'])])
-
+chart_template_id = (
+    env["account.chart.template"].search([("name", "=", "PGCE PYMEs 2008")])[0].id
+)
+fields = env["ir.model.fields"].search(
+    [
+        ("model", "=", "account.account.template"),
+        ("name", "in", ["code", "user_type_id"]),
+    ]
+)
 for company in companies:
     try:
-        wizard = env['wizard.update.charts.accounts'].with_context(default_company_id=company.id).create({
-            "chart_template_id": chart_template_id
-        })
+        wizard = (
+            env["wizard.update.charts.accounts"]
+            .with_context(default_company_id=company.id)
+            .create({"chart_template_id": chart_template_id})
+        )
         for f in fields:
             wizard.account_field_ids = [(3, f.id)]
-        wizard.action_find_records() # code = False  user_type_id = False
+        wizard.action_find_records()  # code = False  user_type_id = False
         wizard.action_update_records()
-        _logger.info(f"Update chart templates for companie : {company.id} - {company.name}")
+        _logger.info(
+            f"Update chart templates for companie : {company.id} - {company.name}"
+        )
     except Exception as e:
-        _logger.error(f"Error update chart templates {company.id} - {company.name}: {e}")
+        _logger.error(
+            f"Error update chart templates {company.id} - {company.name}: {e}"
+        )
 
 # Confirma los cambios
 env.cr.commit()
 _logger.info("Update chart templates of all companies")
+
