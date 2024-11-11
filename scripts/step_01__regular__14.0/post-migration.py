@@ -20,6 +20,10 @@ modules_to_uninstall = [
     "contract_mandate",
 ]
 
+# Actualizar lista de modulos
+update_app_list = env['base.module.update'].create({})
+update_app_list.update_module()
+
 for module_name in modules_to_uninstall:
     try:
         # Desinstala el módulo
@@ -36,22 +40,6 @@ for module_name in modules_to_uninstall:
 env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
-# Not working
-# try:
-#     payments = env['account.payment'].search([])
-# except Exception as e:
-#     _logger.error(f"search account.payment {e}")
-# _logger.info(f"Check payments : {len(payments)}")
-# for payment in payments:
-#     try:
-#         _logger.error(f"{__dict__(payment)}")
-#         if len(payment.payment_line_ids) == 0:
-#             _logger.info(f"Delete payment : {payment.id}")
-#             payment.unlink()
-#     except Exception as e:
-#         _logger.error(f"Error delete payment {payment.id}: {e}")
-# Confirma los cambios
-# _logger.info("Payments without payment lines deleted.")
 
 # Update chart of accounts
 try:
