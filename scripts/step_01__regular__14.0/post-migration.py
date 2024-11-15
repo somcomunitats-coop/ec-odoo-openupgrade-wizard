@@ -46,9 +46,10 @@ _logger.info("Module uninstallation completed.")
 # Update contract.line
 try:
     contract_lines = env["contract.line"].search([])
-    contract_lines.write({
-        "automatic_price": False
-    })
+    for contract_line in contract_lines:
+        contract_line.write({
+            "automatic_price": False
+        })
 except Exception as e:
     _logger.error(f"Update contract.line: {e}")
 
