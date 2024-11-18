@@ -6,12 +6,10 @@ _logger.info("Executing post-migration.py script ...")
 env = env  # noqa: F821
 
 # Lista de módulos a desinstalar
-modules_to_uninstall = [
-    "base_rest_base_structure",
-]
+modules_to_uninstall = ["base_rest_base_structure", "l10n_es_extra_data"]
 
 # Actualizar lista de modulos
-update_app_list = env['base.module.update'].create({})
+update_app_list = env["base.module.update"].create({})
 update_app_list.update_module()
 
 for module_name in modules_to_uninstall:

@@ -10,21 +10,27 @@ mako
 
 ## modules to uninstall (from v16)
 #odoo-addon-account-menu==undefined No existe
-#odoo-addon-account-statement-import-txt-xlsx==undefined-No-existe -> no se puede desintalar
+#odoo-addon-account-statement-import-txt-xlsx==undefined
 #odoo-addon-base-rest-auth-jwt==undefined No existe
+#odoo-addon-base-future-response==undefined No existe
 #odoo-addon-mass-editing==undefined No existe
 #odoo-addon-web-access-rule-buttons==undefined No existe
 #odoo-addon-account-reconciliation-widget==undefined No existe
 #odoo-addon-web-decimal-numpad-dot==undefined No existe
-#odoo-addon-base-future-response==undefined No existe
-#base_rest_base_structure
+
+# l10n_es_extra_data
+# base_rest_base_structure
+# cooperator_website
+# base_rest_auth_jwt
 
 ## modules to deactivate and reactivate after migration
-#odoo-addon-cooperator-website==undefined -> no se puede desintalar
 #odoo-addon-contract-queue-job==undefined
 #odoo-addon-contract-mandate==undefined
 #energy_communities_api
 #auth_jwt
+
+#odoo-addon-account-statement-import-sheet-file
+#odoo-addon-account-reconcile-oca
 
 odoo-addon-account-asset-management==16.0.1.2.5.2
 odoo-addon-account-banking-pain-base==16.0.1.2.1.1
@@ -39,6 +45,7 @@ odoo-addon-account-payment-return-import-iso20022==16.0.1.0.2
 odoo-addon-account-payment-return-import==16.0.1.0.1.4
 odoo-addon-account-payment-return==16.0.1.1.1.1
 odoo-addon-account-payment-sale==16.0.1.0.3
+odoo-addon-account-reconcile-oca==16.0.2.0.7.1
 odoo-addon-account-statement-import-sheet-file==16.0.1.1.2.3
 odoo-addon-account-tax-balance==16.0.1.1.2
 odoo-addon-base-bank-from-iban==16.0.2.0.2
