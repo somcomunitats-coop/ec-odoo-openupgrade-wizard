@@ -43,6 +43,19 @@ for module_name in modules_to_uninstall:
 env.cr.commit()
 _logger.info("Module uninstallation completed.")
 
+# Update contract.line
+try:
+    contract_lines = env["contract.line"].search([])
+    for contract_line in contract_lines:
+        contract_line.write({
+            "automatic_price": False
+        })
+except Exception as e:
+    _logger.error(f"Update contract.line: {e}")
+
+env.cr.commit()
+_logger.info("Update contract.line")
+
 
 # Update chart of accounts
 try:
@@ -83,4 +96,3 @@ for company in companies:
 # Confirma los cambios
 env.cr.commit()
 _logger.info("Update chart templates of all companies")
-
