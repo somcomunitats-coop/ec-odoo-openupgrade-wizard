@@ -10,15 +10,15 @@ modules_to_uninstall = [
     "account_menu",
     "account_statement_import_txt_xlsx",
     "base_rest_auth_jwt",
-    "base_contextvars",
-    "mass_editing",
-    "web_access_rule_buttons",
-    "account_reconciliation_widget",
-    "web_decimal_numpad_dot",
     "auth_jwt",
     "energy_communities_api",
+    "mass_editing",
+    "web_access_rule_buttons",
     "base_future_response",
-    "cooperator_website",
+    "base_contextvars", 
+    "account_reconciliation_widget",
+    "web_decimal_numpad_dot",
+    # "cooperator_website",
     "contract_queue_job",
     "contract_mandate",
 ]
@@ -55,6 +55,19 @@ except Exception as e:
 
 env.cr.commit()
 _logger.info("Update contract.line")
+
+# Update contract.template.line
+try:
+    contract_template_lines = env["contract.template.line"].search([])
+    for contract_template_line in contract_template_lines:
+        contract_template_line.write({
+            "automatic_price": False
+        })
+except Exception as e:
+    _logger.error(f"Update contract.template.line: {e}")
+
+env.cr.commit()
+_logger.info("Update contract.template.line")
 
 
 # Update chart of accounts
