@@ -98,7 +98,7 @@ odoo-addon-l10n-es-aeat-mod390==16.0.2.6.0.1
 odoo-addon-l10n-es-aeat-sii-oca==16.0.2.0.1
 odoo-addon-l10n-es-cooperator==16.0.1.0.0.4
 odoo-addon-l10n-es-facturae==16.0.1.8.0.4
-odoo-addon-l10n-es-irnr==16.0.1.1.0
+odoo-addon-l10n-es-irnr==16.0.1.2.1.1
 odoo-addon-l10n-es-mis-report==16.0.1.1.0
 odoo-addon-l10n-es-partner-mercantil==16.0.1.0.0.4
 odoo-addon-l10n-es-partner==16.0.2.2.0
